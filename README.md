@@ -1,8 +1,8 @@
-# Coaches Classroom
+# Eagles Classroom
 
-![Coaches Classroom](https://via.placeholder.com/800x400?text=Coaches+Classroom)
+![Eagles Classroom](https://via.placeholder.com/800x400?text=Coaches+Classroom)
 
-A modern web application designed to help basketball coaches organize, analyze, and share their playbooks. Built with React and Tailwind CSS, featuring a responsive dark mode interface and comprehensive play management system.
+A modern web application designed to help the CCS Varsity Basketball Eagles organize, analyze, and share their playbooks. Built with React and Tailwind CSS, featuring a responsive dark mode interface and comprehensive play management system.
 
 ## 🏀 Features
 
@@ -42,7 +42,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/coaches-classroom.git
-cd coaches-classroom
+cd eagles-classroom
 ```
 
 2. Install dependencies:
@@ -60,7 +60,7 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-coaches-classroom/
+eagles-classroom/
 ├── src/
 │   ├── components/         # Reusable components
 │   │   ├── Navbar.jsx
@@ -146,10 +146,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Headless UI](https://headlessui.dev/)
 - [Lucide Icons](https://lucide.dev/)
 
-## 📞 Support
-
-For support, email support@coachesclassroom.com or open an issue in the GitHub repository.
-
 ---
 
-Made with ❤️ by [Your Name/Team]
+Made with ❤️ by [Coach Chris McGrath]
