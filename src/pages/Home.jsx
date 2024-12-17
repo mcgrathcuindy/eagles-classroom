@@ -18,8 +18,10 @@ export default function Home() {
         </div>
 
         {/* Video Section */}
-        {/* <VideoPlayer videoId="gCoJPxctDBA" /> */}
-        <VideoPlayer videoId="y_PEhyUxbfs" />
+        <VideoPlayer videoId="gCoJPxctDBA" />
+
+        {/* video id for welcome video: y_PEhyUxbfs */}
+        {/* <VideoPlayer videoId="y_PEhyUxbfs" /> */}
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4">
