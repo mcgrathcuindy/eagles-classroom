@@ -79,10 +79,14 @@ Navigation is dynamically built from YouTube data in `src/components/Navbar.jsx`
 **Dynamic Play Page** (`src/pages/Play.jsx`):
 - Route: `/play/:category/:videoId`
 - Fetches video details from YouTube API based on URL params
-- Displays using three core components:
-  - `PlayTitle` - Video title from YouTube
-  - `VideoPlayer` - YouTube embed
-  - `PlayDescription` - Video description from YouTube
+- Modern, polished design with:
+  - Breadcrumb navigation (Home > All Plays > Category > Video)
+  - Back button with hover animation
+  - Category badge and publish date
+  - Large video player in card container
+  - Channel information
+  - Formatted description with proper line breaks
+  - Shadow effects and rounded corners
 - Includes loading and error states
 
 **More Page** (`src/pages/More.jsx`):
@@ -95,8 +99,6 @@ Navigation is dynamically built from YouTube data in `src/components/Navbar.jsx`
 Located in `src/components/`:
 - **Navbar.jsx**: Main navigation with desktop dropdowns and mobile hamburger menu (dynamically populated from YouTube)
 - **VideoPlayer.jsx**: YouTube iframe embed wrapper
-- **PlayTitle.jsx**: Styled title header for play pages
-- **PlayDescription.jsx**: Play description card with consistent styling
 - **PlayCard.jsx**: Modern card component with video thumbnail, hover effects, and play button overlay
 - **LoadingSpinner.jsx**: Loading state indicator
 - **ErrorMessage.jsx**: Error display with optional retry button
