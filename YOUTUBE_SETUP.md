@@ -113,7 +113,43 @@ The YouTube Data API v3 has daily quotas:
 
 With 4 playlists and approximately 50 videos total, initial load costs ~54 units.
 
-**Tip**: Consider implementing caching in production to reduce API calls.
+## Caching System
+
+**The app now includes automatic caching to minimize API usage:**
+
+- **Cache Duration**: 1 hour (configurable in `src/services/youtube.js`)
+- **Storage**: Browser localStorage
+- **Cache Keys**:
+  - All playlists: `eagles_classroom_all_playlists`
+  - Individual playlists: `eagles_classroom_playlist_{playlistId}`
+  - Individual videos: `eagles_classroom_video_{videoId}`
+
+### How Caching Works
+
+1. **First Visit**: Data is fetched from YouTube API and cached
+2. **Subsequent Visits**: Data is loaded from cache (instant, no API calls)
+3. **Cache Expiration**: After 1 hour, fresh data is automatically fetched
+4. **Manual Refresh**: Click the refresh button on the "All Plays" page to force update
+
+### Benefits
+
+- **Reduced API Quota Usage**: Most page loads use 0 API units
+- **Faster Loading**: Cached data loads instantly
+- **Offline Resilience**: App works with cached data even if API is temporarily unavailable
+
+### Adjusting Cache Duration
+
+To change the cache duration, edit `src/services/youtube.js`:
+
+```javascript
+// Change from 10 hours to your preferred duration
+const CACHE_TTL = 60 * 60 * 10000; // milliseconds
+```
+
+Examples:
+- 30 minutes: `30 * 60 * 1000`
+- 2 hours: `2 * 60 * 60 * 1000`
+- 1 day: `24 * 60 * 60 * 1000`
 
 ## Troubleshooting
 
@@ -137,10 +173,15 @@ With 4 playlists and approximately 50 videos total, initial load costs ~54 units
 - Verify the `.env` file is in the project root
 - Make sure you restart the dev server after editing `.env`
 
+### Clear cache to see updated content
+- Click the "Refresh" button on the "All Plays" page
+- Or clear browser localStorage manually in browser DevTools
+- Cache automatically expires after 1 hour
+
 ## Next Steps
 
 Once everything is working:
-1. Remove old hardcoded play files from `src/pages/offense/`, `src/pages/defense/`, etc.
+1. Monitor cache performance in browser DevTools console (shows "Using cached data" or "Fetching fresh data")
 2. Consider adding video thumbnails to the play cards
-3. Implement caching to reduce API calls
-4. Add search/filter functionality
+3. Add search/filter functionality
+4. Adjust cache duration based on how frequently you update videos

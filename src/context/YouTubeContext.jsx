@@ -5,10 +5,10 @@ import { useAllPlaylists } from '../hooks/useYouTubeData';
 const YouTubeContext = createContext(null);
 
 export function YouTubeProvider({ children }) {
-  const { data, loading, error } = useAllPlaylists();
+  const { data, loading, error, refresh } = useAllPlaylists();
 
   return (
-    <YouTubeContext.Provider value={{ playlists: data, loading, error }}>
+    <YouTubeContext.Provider value={{ playlists: data, loading, error, refresh }}>
       {children}
     </YouTubeContext.Provider>
   );
