@@ -70,6 +70,7 @@ Navigation is dynamically built from YouTube data in `src/components/Navbar.jsx`
 - Fetches all playlists on app load via `useYouTube()` context
 - Builds dropdown menus with video titles from each playlist
 - Links to `/play/{category}/{videoId}` for each video
+- **Automatically filters out empty playlists** - categories with no videos won't appear in the UI
 
 **Adding New Plays**: Simply add a video to the appropriate YouTube playlist - no code changes required!
 

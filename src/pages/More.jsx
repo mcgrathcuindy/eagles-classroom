@@ -62,23 +62,25 @@ export default function More() {
           </button>
         </div>
 
-        {Object.entries(playlists).map(([category, videos]) => (
-          <div key={category} className="mb-8 md:mb-12">
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 capitalize px-4 border-b-4 border-b-sky-400">
-              {category}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {videos.map((video) => (
-                <PlayCard
-                  key={video.id}
-                  title={video.title}
-                  href={`/play/${category}/${video.id}`}
-                  thumbnail={video.thumbnail}
-                />
-              ))}
+        {Object.entries(playlists)
+          .filter(([category, videos]) => videos && videos.length > 0) // Filter out empty playlists
+          .map(([category, videos]) => (
+            <div key={category} className="mb-8 md:mb-12">
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 capitalize px-4 border-b-4 border-b-sky-400">
+                {category}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                {videos.map((video) => (
+                  <PlayCard
+                    key={video.id}
+                    title={video.title}
+                    href={`/play/${category}/${video.id}`}
+                    thumbnail={video.thumbnail}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

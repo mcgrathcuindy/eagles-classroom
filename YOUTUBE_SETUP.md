@@ -97,6 +97,8 @@ To add a new play:
 2. Add it to the appropriate playlist
 3. The app will automatically detect it on the next page load
 
+**Note**: If a playlist is empty (contains no videos), it will not appear in the navigation or on the More page.
+
 ### Video Metadata
 
 The app uses YouTube's video metadata:

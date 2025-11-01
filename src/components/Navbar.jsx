@@ -22,16 +22,20 @@ export default function Navbar() {
   const isCurrentPath = (path) => location.pathname === path
 
   // Build navigation structure from YouTube playlists
+  // Filter out empty playlists (categories with no videos)
   const navigation = useMemo(() => {
     if (!playlists) return {};
 
     const nav = {};
     Object.keys(playlists).forEach(category => {
-      nav[category] = playlists[category].map(video => ({
-        name: video.title,
-        href: `/play/${category}/${video.id}`,
-        videoId: video.id,
-      }));
+      // Only include categories that have videos
+      if (playlists[category] && playlists[category].length > 0) {
+        nav[category] = playlists[category].map(video => ({
+          name: video.title,
+          href: `/play/${category}/${video.id}`,
+          videoId: video.id,
+        }));
+      }
     });
     return nav;
   }, [playlists])
