@@ -96,7 +96,7 @@ Located in `src/components/`:
 - **VideoPlayer.jsx**: YouTube iframe embed wrapper
 - **PlayTitle.jsx**: Styled title header for play pages
 - **PlayDescription.jsx**: Play description card with consistent styling
-- **PlayCard.jsx**: Clickable card used in the More page grid
+- **PlayCard.jsx**: Modern card component with video thumbnail, hover effects, and play button overlay
 - **LoadingSpinner.jsx**: Loading state indicator
 - **ErrorMessage.jsx**: Error display with optional retry button
 

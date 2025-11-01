@@ -182,6 +182,6 @@ Examples:
 
 Once everything is working:
 1. Monitor cache performance in browser DevTools console (shows "Using cached data" or "Fetching fresh data")
-2. Consider adding video thumbnails to the play cards
-3. Add search/filter functionality
-4. Adjust cache duration based on how frequently you update videos
+2. Consider adding search/filter functionality to the More page
+3. Adjust cache duration based on how frequently you update videos
+4. Consider adding video duration or view count metadata to cards
