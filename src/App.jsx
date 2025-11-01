@@ -1,45 +1,29 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { YouTubeProvider } from './context/YouTubeContext'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import More from './pages/More'
-import Bird from './pages/offense/Bird'
-import Celtic from './pages/offense/Celtic'
-import Texas from './pages/offense/Texas'
-import Mango from './pages/offense/Mango'
-import Red from './pages/offense/Red'
-import Orange from './pages/offense/Orange'
-import Glitch from './pages/offense/Glitch'
-import Eagle from './pages/offense/Eagle'
-import Yahtzee from './pages/defense/Yahtzee'
-import Diamond from './pages/defense/Diamond'
-import Green from './pages/slob/Green'
-// Import other play pages...
+import Play from './pages/Play'
+import LoadingSpinner from './components/LoadingSpinner'
+import ErrorMessage from './components/ErrorMessage'
 
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#1a1a1a]">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/more" element={<More />} />
-          <Route path="/offense/red" element={<Red />} />
-          <Route path="/offense/orange" element={<Orange />} />
-          <Route path="/offense/glitch" element={<Glitch />} />
-          <Route path="/offense/eagle" element={<Eagle />} />
-          <Route path="/offense/bird" element={<Bird />} />
-          <Route path="/offense/celtic" element={<Celtic />} />
-          <Route path="/offense/texas" element={<Texas />} />
-          <Route path="/offense/mango" element={<Mango />} />
-          <Route path="/defense/yahtzee" element={<Yahtzee />} />
-          <Route path="/defense/diamond" element={<Diamond />} />
-          <Route path="/slob/green" element={<Green />} />
-          {/* Add routes for other play pages */}
-          {/* Catch-all route for unmatched URLs */}
-          <Route path="*" element={<NotFound />} /> 
-        </Routes>
-      </div>
+      <YouTubeProvider>
+        <div className="min-h-screen bg-[#1a1a1a]">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/more" element={<More />} />
+            {/* Dynamic play route - handles all category/video combinations */}
+            <Route path="/play/:category/:videoId" element={<Play />} />
+            {/* Catch-all route for unmatched URLs */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </YouTubeProvider>
     </Router>
   )
 }

@@ -1,38 +1,40 @@
 // src/components/Navbar.jsx
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDown, Menu as MenuIcon, X } from 'lucide-react'
 import classNames from 'classnames'
+import { useYouTube } from '../context/YouTubeContext'
 
-export const navigation = {
-  offense: [
-    { name: 'Red', href: '/offense/red' },
-    { name: 'Glitch', href: '/offense/glitch' },
-    { name: 'Orange', href: '/offense/orange' },
-    { name: 'Eagle', href: '/offense/eagle' },
-    { name: 'Texas', href: '/offense/texas' },
-    { name: 'Celtic', href: '/offense/celtic' },
-    { name: 'Mango', href: '/offense/mango' },
-    { name: 'Bird', href: '/offense/bird' },
-  ],
-  defense: [
-    { name: 'Yahtzee', href: '/defense/yahtzee' },
-    { name: 'Diamond', href: '/defense/diamond' },
-  ],
-  slob: [
-    { name: 'Green', href: '/slob/green' },
-  ],
-  blob: [
-    { name: 'Baseline Inbound', href: '/blob/box' },
-  ],
+// Helper function to create URL-friendly slugs
+function createSlug(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 }
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const location = useLocation()
-  
+  const { playlists, loading } = useYouTube()
+
   const isCurrentPath = (path) => location.pathname === path
+
+  // Build navigation structure from YouTube playlists
+  const navigation = useMemo(() => {
+    if (!playlists) return {};
+
+    const nav = {};
+    Object.keys(playlists).forEach(category => {
+      nav[category] = playlists[category].map(video => ({
+        name: video.title,
+        href: `/play/${category}/${video.id}`,
+        videoId: video.id,
+      }));
+    });
+    return nav;
+  }, [playlists])
 
   return (
     <nav className="bg-[#2a2a2a] p-4">
