@@ -9,6 +9,7 @@ export const PLAYLISTS = {
   defense: 'PLIpKLwUDEQqjcqMUHjXti7EWPjGuuGi2Z',
   slob: 'PLIpKLwUDEQqg2Y6cBfkfoS8ukp2Wos5EL',
   blob: 'PLIpKLwUDEQqjbvwBDXggaguOk3e9LGbTy',
+  pressbreak: 'PLIpKLwUDEQqibAL4QowbpUFWBL1aaLQm4',
 };
 
 // YouTube API endpoints
